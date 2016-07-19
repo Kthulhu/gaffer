@@ -24,7 +24,18 @@ title: Gaffer Blog
                             <div class="post-media">
                                 <div class="owl-carousel item1-carousel nf-carousel-theme">
                                     <div class="item">
-                                        <img src="{{ site.baseurl }}{{ post.icon }}" alt="" />
+                                        
+					{% assign iconPrefix = post.icon | slice: 0, 4 %}
+					{% if iconPrefix == "http" %}
+					
+						<img src="{{ post.icon }}" alt="" />
+					
+					{% else %}
+					
+						<img src="{{ site.baseurl }}{{ post.icon }}" alt="" />
+					
+					{% endif %}
+					
                                     </div>                            
                                 </div>
                             </div>
@@ -32,7 +43,7 @@ title: Gaffer Blog
                                 {{ post.excerpt }}
                             </div>
                         <div class="pull-right">
-		            <a class="btn btn-sm btn-color-line" href="{{ post.url }}">Read More<i class="fa fa-long-arrow-right right"></i></a>
+		            <a class="btn btn-sm btn-color-line" href="{{ site.baseurl }}{{ post.url }}">Read More<i class="fa fa-long-arrow-right right"></i></a>
                         </div>
                     </div>
                     <!-- End Post Item -->
